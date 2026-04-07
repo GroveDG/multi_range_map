@@ -298,7 +298,7 @@ mod multirangeslotmap {
 			self.fence.get_next(i)
 		}
 	}
-	impl<I, V, const N: usize> Default for MultiRangeSlotMap<I, V, N> {
+	impl<I, V: Key, const N: usize> Default for MultiRangeSlotMap<I, V, N> {
 		fn default() -> Self {
 			Self {
 				fence: Default::default(),
