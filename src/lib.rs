@@ -1,3 +1,5 @@
+#![doc = include_str!("../README.md")]
+
 use std::{
 	collections::{BTreeMap, HashMap},
 	hash::Hash,
@@ -38,7 +40,7 @@ impl<K, const N: usize> Default for Fencepost<K, N> {
 	}
 }
 
-// A range map for overlapping ranges of index `I` mapping to `V`.
+/// A range map for overlapping ranges of index `I` mapping to `V`.
 #[derive(Debug, Clone)]
 pub struct MultiRangeMap<I, V, const N: usize = DEFAULT_N> {
 	posts: BTreeMap<I, Fencepost<V, N>>,
@@ -249,9 +251,9 @@ impl<I, V, const N: usize> Default for MultiRangeBTreeMap<I, V, N> {
 	}
 }
 
-#[cfg(feature = "slotmap")]
+#[cfg(any(feature = "slotmap", doc))]
 pub use multirangeslotmap::*;
-#[cfg(feature = "slotmap")]
+#[cfg(any(feature = "slotmap", doc))]
 mod multirangeslotmap {
 	use std::ops::Range;
 
