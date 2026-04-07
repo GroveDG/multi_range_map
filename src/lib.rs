@@ -251,9 +251,9 @@ impl<I, V, const N: usize> Default for MultiRangeBTreeMap<I, V, N> {
 	}
 }
 
-#[cfg(any(feature = "slotmap", doc))]
+#[cfg(any(feature = "slotmap"))]
 pub use multirangeslotmap::*;
-#[cfg(any(feature = "slotmap", doc))]
+#[cfg(any(feature = "slotmap"))]
 mod multirangeslotmap {
 	use std::ops::Range;
 
