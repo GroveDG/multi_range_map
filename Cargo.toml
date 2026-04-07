@@ -8,7 +8,6 @@ edition = "2024"
 
 [features]
 slotmap = ["dep:slotmap"]
-doc = ["slotmap"]
 
 [package.metadata.docs.rs]
 all-features = true
