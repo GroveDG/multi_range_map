@@ -167,6 +167,20 @@ pub struct MultiRangeHashMap<I, K, const N: usize = DEFAULT_N> {
 	fence: MultiRangeMap<I, K, N>,
 	bounds: HashMap<K, Range<I>>,
 }
+impl<I: Ord, K, const N: usize> MultiRangeHashMap<I, K, N> {
+	/// Returns the first index.
+	pub fn first_index(&mut self) -> Option<&I> {
+		self.fence.first()
+	}
+	/// Returns the last index.
+	pub fn last_index(&mut self) -> Option<&I> {
+		self.fence.last()
+	}
+	/// Returns the first and last index.
+	pub fn bounds(&mut self) -> Option<(&I, &I)> {
+		self.fence.bounds()
+	}
+}
 impl<I: Ord + Clone, K: Hash + Eq + Clone, const N: usize> MultiRangeHashMap<I, K, N> {
 	pub fn insert(&mut self, k: K, range: Range<I>) {
 		self.bounds.insert(k.clone(), range.clone());
@@ -211,6 +225,20 @@ impl<I, V, const N: usize> Default for MultiRangeHashMap<I, V, N> {
 pub struct MultiRangeBTreeMap<I, K, const N: usize = DEFAULT_N> {
 	fence: MultiRangeMap<I, K, N>,
 	bounds: BTreeMap<K, Range<I>>,
+}
+impl<I: Ord, K, const N: usize> MultiRangeBTreeMap<I, K, N> {
+	/// Returns the first index.
+	pub fn first_index(&mut self) -> Option<&I> {
+		self.fence.first()
+	}
+	/// Returns the last index.
+	pub fn last_index(&mut self) -> Option<&I> {
+		self.fence.last()
+	}
+	/// Returns the first and last index.
+	pub fn bounds(&mut self) -> Option<(&I, &I)> {
+		self.fence.bounds()
+	}
 }
 impl<I: Ord + Clone, K: Ord + Clone, const N: usize> MultiRangeBTreeMap<I, K, N> {
 	pub fn insert(&mut self, key: K, range: Range<I>) {
@@ -266,6 +294,20 @@ mod multirangeslotmap {
 	pub struct MultiRangeSlotMap<I, K: Key, const N: usize = DEFAULT_N> {
 		fence: MultiRangeMap<I, K, N>,
 		bounds: SlotMap<K, Range<I>>,
+	}
+	impl<I: Ord, K: Key, const N: usize> MultiRangeSlotMap<I, K, N> {
+		/// Returns the first index.
+		pub fn first_index(&mut self) -> Option<&I> {
+			self.fence.first()
+		}
+		/// Returns the last index.
+		pub fn last_index(&mut self) -> Option<&I> {
+			self.fence.last()
+		}
+		/// Returns the first and last index.
+		pub fn bounds(&mut self) -> Option<(&I, &I)> {
+			self.fence.bounds()
+		}
 	}
 	impl<I: Ord + Clone, K: Key, const N: usize> MultiRangeSlotMap<I, K, N> {
 		pub fn insert(&mut self, range: Range<I>) -> K {

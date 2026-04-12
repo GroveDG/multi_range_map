@@ -3,7 +3,7 @@ name = "multi_range_map"
 description = "A range map for overlapping ranges."
 license = "CC-PDM-1.0"
 repository = "https://github.com/GroveDG/multi_range_map"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2024"
 
 [features]
