@@ -169,15 +169,15 @@ pub struct MultiRangeHashMap<I, K, const N: usize = DEFAULT_N> {
 }
 impl<I: Ord, K, const N: usize> MultiRangeHashMap<I, K, N> {
 	/// Returns the first index.
-	pub fn first_index(&mut self) -> Option<&I> {
+	pub fn first_index(&self) -> Option<&I> {
 		self.fence.first()
 	}
 	/// Returns the last index.
-	pub fn last_index(&mut self) -> Option<&I> {
+	pub fn last_index(&self) -> Option<&I> {
 		self.fence.last()
 	}
 	/// Returns the first and last index.
-	pub fn bounds(&mut self) -> Option<(&I, &I)> {
+	pub fn bounds(&self) -> Option<(&I, &I)> {
 		self.fence.bounds()
 	}
 }
@@ -228,15 +228,15 @@ pub struct MultiRangeBTreeMap<I, K, const N: usize = DEFAULT_N> {
 }
 impl<I: Ord, K, const N: usize> MultiRangeBTreeMap<I, K, N> {
 	/// Returns the first index.
-	pub fn first_index(&mut self) -> Option<&I> {
+	pub fn first_index(&self) -> Option<&I> {
 		self.fence.first()
 	}
 	/// Returns the last index.
-	pub fn last_index(&mut self) -> Option<&I> {
+	pub fn last_index(&self) -> Option<&I> {
 		self.fence.last()
 	}
 	/// Returns the first and last index.
-	pub fn bounds(&mut self) -> Option<(&I, &I)> {
+	pub fn bounds(&self) -> Option<(&I, &I)> {
 		self.fence.bounds()
 	}
 }
@@ -297,15 +297,15 @@ mod multirangeslotmap {
 	}
 	impl<I: Ord, K: Key, const N: usize> MultiRangeSlotMap<I, K, N> {
 		/// Returns the first index.
-		pub fn first_index(&mut self) -> Option<&I> {
+		pub fn first_index(&self) -> Option<&I> {
 			self.fence.first()
 		}
 		/// Returns the last index.
-		pub fn last_index(&mut self) -> Option<&I> {
+		pub fn last_index(&self) -> Option<&I> {
 			self.fence.last()
 		}
 		/// Returns the first and last index.
-		pub fn bounds(&mut self) -> Option<(&I, &I)> {
+		pub fn bounds(&self) -> Option<(&I, &I)> {
 			self.fence.bounds()
 		}
 	}
